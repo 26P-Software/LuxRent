@@ -1,0 +1,74 @@
+/*
+
+*/
+/* Types of CSS Selectors */
+/* Universal Selector */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+/* element selector */
+button {
+    padding: 8px;
+    background-color: blue;
+    color: #fff;
+    margin: 4px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+body {
+    background-color: black;
+    color: darkgrey;
+}
+
+img {
+    height: 600px;
+    width: 400px;
+    border-radius: 50%;
+} 
+
+ p {
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+    font-style: italic;
+}
+
+/* Class Selector */
+.container {
+    border: 1px solid red;
+    width: 500px;
+    height: 200px;
+    background-color: azure;
+}
+ .logo-text {
+    font: bold;
+    color: aqua;
+   
+ }
+
+ a {
+     text-decoration: none;
+ }
+/*  Id Selectors */
+#portfolio {
+    border: 4px dotted green;
+} 
+
+/*  Attribute Selector */
+a[href] {
+    color: #fff;
+}
+
+/* Descendant selector */
+
+div h4 {
+    color: red;
+}
+
+/* Child Selector */
+div > p {
+    color: green;
+}

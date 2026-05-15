@@ -20,13 +20,13 @@ button {
 }
 
 body {
-    background-color: black;
+    background-color: rgb(47, 45, 45);
     color: darkgrey;
 }
 
 img {
-    height: 600px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
 } 
 
@@ -55,7 +55,16 @@ img {
 /*  Id Selectors */
 #portfolio {
     border: 4px dotted green;
+}
+.content-section {
+    border: 1px solid red;
 } 
+
+#contact {
+    border: 2px solid red;
+    margin: 2px;
+    border-radius: 8px;
+}
 
 /*  Attribute Selector */
 a[href] {
@@ -68,7 +77,53 @@ div h4 {
     color: red;
 }
 
+div ul li {
+    color: blueviolet;
+}
+
 /* Child Selector */
 div > p {
     color: green;
+}
+
+/* Adjacent Sibling Selector  */
+
+h4 + nav {
+    background-color: green;
+    color: #fff;
+
+}
+
+/* General Sibling Selector  */
+h3 ~ p {
+    color: rgb(233, 20, 20);
+}
+
+/* Group Selectors */
+h2, h3, h4 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: tomato;
+}
+
+/* Interactive state Pseudo class selectors*/
+.cta-btn:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.cta-btn:active {
+    background-color: yellow;
+}
+
+input:focus {
+    border-color: rgb(173, 39, 197);
+}
+
+a::before {
+    content: "Navigation Links : ";
+    color: red;
+}
+p::after {
+    content: "Citation";
+    color: chocolate;
 }

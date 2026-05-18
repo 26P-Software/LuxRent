@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Studio: CSS Grid Layout</title>
+    <style>
+        :root {
+            --bg-dark: #1c1917;
+            --bg-card: #292524;
+            --border-stone: #44403c;
+            --text-light: #f5f5f4;
+            --text-muted: #d6d3d1;
+            --amber-gold: #f59e0b;
+            --accent-green: #10b981;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; background-color: var(--bg-dark); color: var(--text-muted); padding: 2rem; line-height: 1.6; }
+        
+        header { border-bottom: 2px solid var(--border-stone); padding-bottom: 1rem; margin-bottom: 2rem; }
+        h1 { color: var(--text-light); }
+        h1 span { color: var(--accent-green); }
+        h2 { color: var(--text-light); margin: 1.5rem 0 0.5rem 0; }
+
+        .teaching-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        @media (max-width: 1024px) { .teaching-layout { grid-template-columns: 1fr; } }
+
+        .notes-panel { background-color: var(--bg-card); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-stone); }
+        .sandbox-panel { position: sticky; top: 2rem; height: fit-content; }
+
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background-color: rgba(0,0,0,0.3); color: var(--accent-green); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.95rem; }
+        
+        .important-note { background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--accent-green); padding: 1rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+
+        /* --- THE GRID LIVE DEMO CONTAINER --- */
+        .grid-container-demo {
+            background-color: #12100e;
+            border: 2px dashed var(--accent-green);
+            padding: 1.5rem;
+            border-radius: 6px;
+            min-height: 350px;
+            margin-top: 1rem;
+
+            /* TEACHING BLOCK: Explicit 2D Grid Definition */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1rem;
+        }
+
+        .grid-item {
+            background: linear-gradient(135deg, var(--bg-card), var(--border-stone));
+            border: 1px solid var(--border-stone);
+            color: var(--text-light);
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Teaching modifiers for Grid Lines & Spans */
+        .item-span-columns {
+            grid-column: span 2;
+            border: 2px solid var(--accent-green);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .item-span-complex {
+            grid-column: 3;
+            grid-row: 1 / span 2;
+            border: 2px solid var(--amber-gold);
+            background: rgba(245, 158, 11, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 2: <span>CSS Grid</span> Layout Engine</h1>
+        <p>Core Use Case: Complex, Two-Dimensional Page Layouts (Rows AND Columns Together)</p>
+    </header>
+
+    <div class="teaching-layout">
+        
+        <!-- Lecture Notes Panel -->
+        <section class="notes-panel">
+            <h2>1. Structural Mental Model</h2>
+            <p>Unlike Flexbox, which deals with individual linear paths, Grid allows you to predefine columns and rows beforehand, mapping child elements onto the resulting matrix.</p>
+            <ul>
+                <li><strong>Grid Tracks:</strong> Generic terms indicating an entire singular path row or column row.</li>
+                <li><strong>Grid Lines:</strong> Numbered structural boundaries dividing up coordinates. Crucially, numbering begins at index <code>1</code>, not <code>0</code>.</li>
+                <li><strong>Grid Cell:</strong> A single intersection slot inside the system grid layout space.</li>
+            </ul>
+
+            <h2>2. Creating Columns and Rows</h2>
+            <ul>
+                <li><code>grid-template-columns: 200px 1fr 1fr;</code> <br>Defines 3 explicit columns. Column 1 is locked at 200px, while columns 2 and 3 split remaining fractions.</li>
+                <li><code>fr</code> (Fractional Unit): Represents a dynamic fraction of available free storage space.</li>
+                <li><code>repeat(3, 1fr);</code> <br>Syntactical shorthand that expands to exactly <code>1fr 1fr 1fr</code>.</li>
+                <li><code>gap: 1rem;</code> <br>Applies clear gutters between items uniformly without breaking external block borders.</li>
+            </ul>
+
+            <h2>3. Explicit Item Placement</h2>
+            <p>Child elements can span multiple tracks or place themselves directly into specific line slots:</p>
+            <ul>
+                <li><code>grid-column: span 2;</code> <br>Instructs an element to stretch across two visual column units seamlessly.</li>
+                <li><code>grid-row: 1 / 3;</code> <br>Instructs an element to stretch vertically from line 1 through line 3.</li>
+            </ul>
+
+            <div class="important-note">
+                <strong>Teaching Tip:</strong> Emphasize to students that Grid Lines count the *edges* of cells. For a 3-column setup, there are 4 grid lines. This is why <code>grid-column: 1 / 4;</code> spans the entire length of a 3-column track.
+            </div>
+        </section>
+
+        <!-- Live Interactive Visual Sandbox -->
+        <section class="sandbox-panel">
+            <h2>Live Sandbox View</h2>
+            <p>Observe how these items inhabit the defined grid structure below:</p>
+            
+            <div class="grid-container-demo">
+                <div class="grid-item item-span-columns">Card 1 <br><code>(grid-column: span 2)</code></div>
+                <div class="grid-item item-span-complex">Card 2 <br><code>(grid-row: 1 / span 2)</code></div>
+                <div class="grid-item">Card 3</div>
+                <div class="grid-item">Card 4</div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Exercise for Students</h2>
+            <p>Open this code file and practice making these structural changes:</p>
+            <ul>
+                <li>Change the template columns line item to read <code>repeat(4, 1fr)</code>.</li>
+                <li>Modify Card 2 so it occupies row line 2 while stretching horizontally completely from column line 1 to column line 4.</li>
+                <li>Use <code>grid-template-areas</code> to name zones for a standard dashboard layout (Header, Sidebar, Main, Footer).</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>

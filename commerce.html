@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium E-Commerce Store</title>
+    <!-- FontAwesome for standard industry icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Industry Standard Navbar (Pure CSS) -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#">AMBER<span>STORE</span></a>
+            </div>
+            
+            <div class="nav-search">
+                <input type="text" placeholder="Search products, brands, categories...">
+                <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- CSS-only Responsive Nav Menu -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Shop</a>
+                <a href="#" class="nav-link">Deals</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#" class="action-icon" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+                <a href="#" class="action-icon" aria-label="Favorites"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="action-icon cart-icon" aria-label="Cart">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">New Season Arrival</span>
+            <h1>Elevate Your Digital Lifestyle</h1>
+            <p>Explore the ultimate collection of premium tech and lifestyle accessories engineered for perfection.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Shop Collection</a>
+                <a href="#" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout Container (Sidebar + Main Content) -->
+    <div class="layout-container">
+        
+        <!-- Sidebar (Filters & Categories) -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#" class="active">All Products</a></li>
+                    <li><a href="#">Audio & Sound</a></li>
+                    <li><a href="#">Wearable Tech</a></li>
+                    <li><a href="#">Office Setup</a></li>
+                    <li><a href="#">Minimalist Packs</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Filter by Price</h3>
+                <div class="price-filter">
+                    <input type="range" min="0" max="1000" value="500" class="slider">
+                    <div class="price-labels">
+                        <span>$0</span>
+                        <span>$1000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Availability</h3>
+                <label class="checkbox-container">In Stock
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">On Sale
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Main Product Grid -->
+        <!-- Main Product Grid -->
+        <main class="main-content">
+            <div class="content-header">
+                <h2>Featured Products</h2>
+                <div class="sort-options">
+                    <label for="sort">Sort by:</label>
+                    <select id="sort">
+                        <option>Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                
+                <!-- Product Card 1: Audio -->
+                <div class="product-card">
+                    <div class="product-badge">Hot</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Studio ANC Headphones">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Audio</span>
+                        <h3 class="product-title"><a href="#">Studio ANC Headphones</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>(4.8)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$299.00</span>
+                            <span class="old-price">$349.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2: Wearables -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Minimalist Smartwatch v4">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Wearables</span>
+                        <h3 class="product-title"><a href="#">Minimalist Smartwatch v4</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$199.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3: Office Setup -->
+                <div class="product-card">
+                    <div class="product-badge sale">Sale</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80" alt="Mechanical Desk Keyboard">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Office Setup</span>
+                        <h3 class="product-title"><a href="#">Mechanical Desk Keyboard</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$129.00</span>
+                            <span class="old-price">$159.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4: Packs -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" alt="Waterproof Everyday Pack">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Packs</span>
+                        <h3 class="product-title"><a href="#">Waterproof Everyday Pack</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star-half-stroke"></i>
+                            <span>(4.3)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$145.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5: Audio -->
+                <div class="product-card">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80" alt="True Wireless Earbuds">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Audio</span>
+                        <h3 class="product-title"><a href="#">True Wireless Earbuds</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>(4.9)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$179.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 6: Office Setup -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Desk Mousepad">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Office Setup</span>
+                        <h3 class="product-title"><a href="#">Premium Felt Desk Mat</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>(4.2)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$45.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 7: Wearables -->
+                <div class="product-card">
+                    <div class="product-badge sale">Sale</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&w=600&q=80" alt="Ultra Fitness Tracker">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Wearables</span>
+                        <h3 class="product-title"><a href="#">Ultra Fitness Tracker</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>(3.7)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$69.00</span>
+                            <span class="old-price">$99.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 8: Accessories -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1622445262465-2481c4574875?auto=format&fit=crop&w=600&q=80" alt="Fast Wireless Charging Pad">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Office Setup</span>
+                        <h3 class="product-title"><a href="#">Leather Desk Organizer</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$59.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Standard Detailed Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <h3>AMBER<span>STORE</span></h3>
+                    <p>Crafting high-end, functional ecosystems for digital professionals and design enthusiasts worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Products</a></li>
+                        <li><a href="#">Latest News</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col newsletter-col">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to get special offers, free giveaways, and updates.</p>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 AMBERSTORE. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+                    <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

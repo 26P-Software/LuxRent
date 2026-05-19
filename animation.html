@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: CSS @keyframes Animation Engine</title>
+    <link rel="stylesheet" href="css/animation.css">
+</head>
+<body>
+
+    <header>
+        <h1>Module 3: <span>@keyframes</span> Structural Mechanics</h1>
+        <p>Core Use Case: Complex, Multi-Stage Component Keyframing Without JavaScript Controllers</p>
+    </header>
+
+    <div class="teaching-layout">
+        
+        <!-- Lecture Notes & Explanations -->
+        <section class="panel-theory">
+            <h2>1. Anatomy of an Animation</h2>
+            <p>To implement an animation in CSS, you separate the configuration properties (on the selector) from the actual state checkpoints (inside the timeline definition).</p>
+            
+            <h3>The Shorthand Sub-Properties</h3>
+            <ul>
+                <li><code>animation-name:</code> Maps the element to a specific <code>@keyframes</code> timeline block.</li>
+                <li><code>animation-duration:</code> The total execution runtime clock length for a single complete loop (e.g., <code>16s</code>).</li>
+                <li><code>animation-iteration-count:</code> Determines how many cycles run before halting. <code>infinite</code> loops permanently.</li>
+                <li><code>animation-timing-function:</code> Manages rate curves (e.g., <code>ease-in-out</code>, <code>linear</code>, or customized cubic-bezier arcs).</li>
+            </ul>
+
+            <h2>2. The @keyframes Timeline Map</h2>
+            <p>Think of <code>@keyframes</code> as a timeline calculated from <code>0%</code> (start) to <code>100%</code> (end). You declare properties at various percentages, and the browser handles the transitions between them automatically.</p>
+
+            <div class="math-box">
+                <strong>The Image Slider Math Formula:</strong>
+                <p style="margin-top:0.5rem; font-size:0.9rem;">To hold a slide perfectly static and then slide smoothly to the next one, your timeline needs matching percentage steps:</p>
+                <ul>
+                    <li><strong>0% - 20%:</strong> Frame remains static at <code>translateX(0%)</code>.</li>
+                    <li><strong>20% - 25%:</strong> Smoothly shifts <code>-25%</code> to slide the next image into view.</li>
+                    <li><strong>25% - 45%:</strong> Frame remains static at <code>translateX(-25%)</code>.</li>
+                </ul>
+            </div>
+
+            <pre>
+@keyframes slideSequence {
+    0%   { transform: translateX(0%); }
+    20%  { transform: translateX(0%); }
+    25%  { transform: translateX(-25%); }
+    45%  { transform: translateX(-25%); }
+    /* Sequence expands continuously per frame */
+}</pre>
+        </section>
+
+        <!-- Live Visual Sandbox Canvas -->
+        <section class="panel-canvas">
+            <h2>Live Interactive Canvas</h2>
+            <p style="margin-bottom: 1.5rem;">Hover over any slide to turn off the dark-mode luminosity filter and view the native image asset.</p>
+
+            <!-- Slider Mask Window Frame -->
+            <div class="slider-viewport">
+                
+                <!-- Linear Multi-Width Track -->
+                <div class="slider-filmstrip">
+                    
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Telemetry Map Matrix">
+                        <div class="slide-caption">01 // Compute Mesh</div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Hardware Node Matrix">
+                        <div class="slide-caption">02 // Core Hardware</div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Encrypted Network Channels">
+                        <div class="slide-caption">03 // Cyber Architecture</div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Server Datacenter Arrays">
+                        <div class="slide-caption">04 // Storage Arrays</div>
+                    </div>
+
+                </div> <!-- End Filmstrip -->
+            </div> <!-- End Viewport -->
+
+            <h3 style="margin-top: 2rem;">Student Lab Challenges</h3>
+            <ul>
+                <li>Change the <code>animation-duration</code> to <code>4s</code> to see how shortening the cycle affects the shift velocity.</li>
+                <li>Swap out <code>animation-timing-function: ease-in-out</code> for <code>linear</code> to observe the difference in mechanical glide rhythm.</li>
+                <li>Add a fifth image by adjusting the filmstrip container width properties to <code>500%</code>, scaling down each slide to <code>20%</code>, and re-calculating the percentage milestones inside the <code>@keyframes</code> block.</li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>

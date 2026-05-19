@@ -1,0 +1,871 @@
+/* ==========================================================================
+   1. VARIABLES & BASE SYSTEM
+   ========================================================================== */
+:root {
+    --stone-bg: #121212;
+    --stone-card: #1A1A1A;
+    --stone-input: #282828;
+    --stone-border: #333333;
+    --amber-gold: #FFB300;
+    --amber-hover: #FFC107;
+    --text-pure: #FFFFFF;
+    --text-dim: #A0A0A0;
+    --text-dark: #111111;
+    --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --speed-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 6px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--stone-bg);
+    color: var(--text-pure);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--speed-smooth);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   2. STICKY NAVBAR & NAVIGATION COMPONENT
+   ========================================================================== */
+.navbar {
+    background-color: var(--stone-card);
+    border-bottom: 1px solid var(--stone-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-brand a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-brand span {
+    color: var(--amber-gold);
+}
+
+.nav-search {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    position: relative;
+}
+
+.nav-search input {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    background-color: var(--stone-input);
+    border: 1px solid var(--stone-border);
+    color: var(--text-pure);
+    border-radius: var(--radius);
+    outline: none;
+    transition: var(--speed-smooth);
+}
+
+.nav-search input:focus {
+    border-color: var(--amber-gold);
+}
+
+.nav-search button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    padding: 0 1.2rem;
+    cursor: pointer;
+}
+
+.nav-search button:hover {
+    color: var(--amber-gold);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-dim);
+    position: relative;
+    padding: 0.25rem 0;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-pure);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--amber-gold);
+    transition: var(--speed-smooth);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.action-icon {
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    position: relative;
+}
+
+.action-icon:hover {
+    color: var(--amber-gold);
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--amber-gold);
+    color: var(--text-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+/* Core Functional Rules for Pure CSS Menu System Trigger */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+}
+
+/* ==========================================================================
+   3. HERO BANNER
+   ========================================================================== */
+.hero {
+    background: linear-gradient(135deg, rgba(18,18,18,0.95) 40%, rgba(255,179,0,0.05) 100%), 
+                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-tag {
+    color: var(--amber-gold);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    color: var(--text-dim);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--amber-gold);
+    color: var(--text-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--amber-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    border: 2px solid var(--stone-border);
+    color: var(--text-pure);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255,255,255,0.05);
+    border-color: var(--text-pure);
+}
+
+/* ==========================================================================
+   4. LAYOUT DESIGN SYSTEM (Main Container, Sidebar & Grids)
+   ========================================================================== */
+.layout-container {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+}
+
+/* Sidebar Components */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.sidebar-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--stone-border);
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.sidebar-links a {
+    color: var(--text-dim);
+}
+
+.sidebar-links a:hover, .sidebar-links a.active {
+    color: var(--amber-gold);
+    padding-left: 4px;
+}
+
+/* Custom CSS Controls for Sidebar Filters */
+.price-filter {
+    padding-top: 0.5rem;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--stone-input);
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--amber-gold);
+    cursor: pointer;
+    transition: var(--speed-smooth);
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: var(--stone-input);
+    border: 1px solid var(--stone-border);
+    border-radius: 3px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--amber-gold);
+    border-color: var(--amber-gold);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid var(--text-dark);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   5. PRODUCT GRID ARCHITECTURE
+   ========================================================================== */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.content-header h2 {
+    font-size: 1.5rem;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.sort-options select {
+    background-color: var(--stone-card);
+    border: 1px solid var(--stone-border);
+    color: var(--text-pure);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+    outline: none;
+    cursor: pointer;
+}
+
+/* auto-fill responsive grid columns logic mapping */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--stone-card);
+    border: 1px solid var(--stone-border);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--speed-smooth);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 179, 0, 0.35);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+.product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--amber-gold);
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.product-badge.sale {
+    background-color: #E64A19;
+    color: var(--text-pure);
+}
+
+.product-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: var(--stone-input);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--speed-smooth);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.04);
+}
+
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-cat {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+}
+
+.product-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.product-title a:hover {
+    color: var(--amber-gold);
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--amber-gold);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.product-rating span {
+    color: var(--text-dim);
+    margin-left: 0.3rem;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    margin-top: auto;
+}
+
+.current-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.old-price {
+    color: var(--text-dim);
+    text-decoration: line-through;
+    font-size: 0.95rem;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    background-color: var(--stone-input);
+    color: var(--text-pure);
+    border: 1px solid var(--stone-border);
+    padding: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--amber-gold);
+    color: var(--text-dark);
+    border-color: var(--amber-gold);
+}
+
+/* ==========================================================================
+   6. FOOTER BLOCK COMPONENT
+   ========================================================================== */
+.footer {
+    background-color: var(--stone-card);
+    border-top: 1px solid var(--stone-border);
+    margin-top: 6rem;
+}
+
+.footer-top {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(2, 1fr) 2fr;
+    gap: 3rem;
+}
+
+.footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.footer-col h3 span {
+    color: var(--amber-gold);
+}
+
+.footer-col h4 {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-col p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-col ul a {
+    color: var(--text-dim);
+}
+
+.footer-col ul a:hover {
+    color: var(--amber-gold);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 38px;
+    height: 38px;
+    background-color: var(--stone-input);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+}
+
+.social-links a:hover {
+    background-color: var(--amber-gold);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+.newsletter-form {
+    display: flex;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background-color: var(--stone-input);
+    border: 1px solid var(--stone-border);
+    color: var(--text-pure);
+    border-radius: var(--radius) 0 0 var(--radius);
+    outline: none;
+}
+
+.newsletter-form button {
+    background-color: var(--amber-gold);
+    color: var(--text-dark);
+    border: none;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--stone-border);
+    padding: 2rem;
+}
+
+.footer-bottom-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.75rem;
+}
+
+/* ==========================================================================
+   7. INTERACTIVE RESPONSIVE MEDIA QUERIES (Breakpoints Optimization)
+   ========================================================================== */
+
+/* Tablet & Standard Monitors Layout Restructuring (Less than 1024px) */
+@media (max-width: 1024px) {
+    .layout-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        background-color: var(--stone-card);
+        padding: 1.75rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--stone-border);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Mobile Pure CSS Navigation Interaction & Layout Shifts (Less than 768px) */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem;
+        flex-wrap: wrap; /* Allows multi-line distribution on tiny windows */
+    }
+
+    /* Wrap search into a full-width dedicated block row beneath logo */
+    .nav-search {
+        order: 4;
+        min-width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    /* Transform navigation row container into an absolute slide-down drawer */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--stone-card);
+        border-bottom: 1px solid var(--stone-border);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link {
+        padding: 1rem 2rem;
+        display: block;
+        border-left: 3px solid transparent;
+    }
+
+    .nav-link::after {
+        display: none; /* Strip out underline desktop visual effects */
+    }
+
+    .nav-link:hover, .nav-link.active {
+        background-color: rgba(255, 179, 0, 0.05);
+        border-left-color: var(--amber-gold);
+    }
+
+    /* Present Hamburger Trigger Label Box */
+    .nav-toggle-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        order: 2;
+    }
+
+    /* CSS Hamburger Bars Architecture */
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: var(--text-pure);
+        position: relative;
+        transition: var(--speed-smooth);
+    }
+
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        content: '';
+        position: absolute;
+    }
+
+    .nav-toggle-label span::before { top: -7px; }
+    .nav-toggle-label span::after { bottom: -7px; }
+
+    .nav-actions {
+        order: 3;
+        gap: 1.25rem;
+    }
+
+    /* ----------------------------------------------------------------------
+       THE PURE-CSS MAGIC:
+       When checkbox is checked, modify sibling properties cleanly.
+       ---------------------------------------------------------------------- */
+    .nav-toggle:checked ~ .nav-menu {
+        max-height: 300px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Morph three burger lines smoothly into an 'X' close icon symbol */
+    .nav-toggle:checked ~ .nav-toggle-label span {
+        background-color: transparent;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+    }
+
+    /* Section adjustments */
+    .hero {
+        padding: 5rem 1rem;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sort-options {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Micro-Displays Structural Adjustments (Less than 480px) */
+@media (max-width: 480px) {
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .newsletter-form input, 
+    .newsletter-form button {
+        border-radius: var(--radius);
+        padding: 0.75rem;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}

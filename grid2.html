@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: CSS Grid Template Areas</title>
+    <style>
+        /* --- Brand Colors (Stone & Amber Palette) --- */
+        :root {
+            --bg-stone-900: #1c1917;
+            --bg-stone-800: #292524;
+            --border-stone-700: #44403c;
+            --text-light: #f5f5f4;
+            --text-muted: #d6d3d1;
+            --amber-gold: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-stone-900);
+            color: var(--text-muted);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .teaching-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-stone-700);
+            padding-bottom: 1rem;
+        }
+
+        .teaching-header h1 {
+            color: var(--text-light);
+        }
+
+        .teaching-header span {
+            color: var(--amber-gold);
+        }
+
+        /* ===================================================
+           1. THE GRID CONTAINER DEFINITION
+           =================================================== */
+        .app-container {
+            display: grid;
+            /* 3 Columns: Sidebar (260px), Main Content (Fluid), Ad Rail (200px) */
+            grid-template-columns: 260px 1fr 200px;
+            /* 3 Rows: Header height, Main section fills space, Footer height */
+            grid-template-rows: 80px minmax(400px, auto) 60px;
+            gap: 1rem;
+            
+            /* The Textual Blueprint Matrix */
+            grid-template-areas: 
+                "head  head  head"
+                "side  main  rail"
+                "foot  foot  foot";
+        }
+
+        /* ===================================================
+           2. ASSIGNING THE GRID ITEMS TO THEIR AREAS
+           =================================================== */
+        .app-header {
+            grid-area: head;
+            background-color: var(--bg-stone-800);
+            border: 1px solid var(--border-stone-700);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+            color: var(--text-light);
+        }
+
+        .app-sidebar {
+            grid-area: side;
+            background-color: var(--bg-stone-800);
+            border: 1px solid var(--border-stone-700);
+            border-radius: 6px;
+            padding: 1.5rem;
+        }
+
+        .app-main {
+            grid-area: main;
+            background-color: #12100e;
+            border: 2px dashed var(--amber-gold);
+            border-radius: 6px;
+            padding: 2rem;
+        }
+
+        .app-right-rail {
+            grid-area: rail;
+            background-color: var(--bg-stone-800);
+            border: 1px solid var(--border-stone-700);
+            border-radius: 6px;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .app-footer {
+            grid-area: foot;
+            background-color: var(--bg-stone-800);
+            border: 1px solid var(--border-stone-700);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        /* --- Global styling helpers inside elements --- */
+        h2, h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: var(--amber-gold);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* ===================================================
+           3. RESPONSIVE MEDIA QUERY OVERRIDE
+           =================================================== */
+        @media (max-width: 1024px) {
+            .app-container {
+                /* Simplify to a single column layout on smaller viewports */
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                
+                /* Completely remap the layout blocks linearly */
+                grid-template-areas: 
+                    "head"
+                    "side"
+                    "main"
+                    "rail"
+                    "foot";
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="teaching-header">
+        <h1>Masterclass: <span>grid-template-areas</span> Blueprint</h1>
+        <p>A pure, visual layout schema avoiding manual grid line math coordinates.</p>
+    </div>
+
+    <!-- The Grid Container -->
+    <div class="app-container">
+        
+        <!-- Grid Item 1 -->
+        <header class="app-header">
+            <h2>Application Header <code>(head)</code></h2>
+        </header>
+
+        <!-- Grid Item 2 -->
+        <aside class="app-sidebar">
+            <h3>Navigation Sidebar <code>(side)</code></h3>
+            <ul>
+                <li>Dashboard</li>
+                <li>Analytics</li>
+                <li>Settings</li>
+            </ul>
+        </aside>
+
+        <!-- Grid Item 3 -->
+        <main class="app-main">
+            <h2>Main Component Workspace <code>(main)</code></h2>
+            <p style="margin-top: 1rem;">Look closely at the CSS styling rules on the parent container. The layout matrix layout is explicitly self-documenting:</p>
+            <pre style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin: 1rem 0; font-family: monospace; color: var(--text-light);">
+grid-template-areas: 
+    "head  head  head"
+    "side  main  rail"
+    "foot  foot  foot";</pre>
+            <p>Because the item blocks are assigned via <code>grid-area: [name];</code>, they snap perfectly into place based entirely on where their name is positioned inside the grid layout string blocks.</p>
+        </main>
+
+        <!-- Grid Item 4 -->
+        <aside class="app-right-rail">
+            <h3>Utility Rail <code>(rail)</code></h3>
+            <p>Perfect for localized widgets, ads, or secondary metrics maps.</p>
+        </aside>
+
+        <!-- Grid Item 5 -->
+        <footer class="app-footer">
+            <p>&copy; 2026 Core Layout Architecture Systems. All rights reserved. <code>(foot)</code></p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

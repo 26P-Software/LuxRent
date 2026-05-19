@@ -6,41 +6,60 @@
     <title>Premium E-Commerce Store</title>
     <!-- FontAwesome for standard industry icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Industry Standard Navbar (Pure CSS) -->
+    <!-- AmberStore Header Layout (Fixed Order) -->
     <header class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="#">AMBER<span>STORE</span></a>
             </div>
             
+            <!-- 1. CSS State Controller -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            
+            <!-- 2. Toggle Button positioned for flex layout alignment -->
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+
+            <!-- 3. Search block  -->
             <div class="nav-search">
                 <input type="text" placeholder="Search products, brands, categories...">
                 <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
-            <!-- CSS-only Responsive Nav Menu -->
-            <nav class="nav-menu">
-                <a href="#" class="nav-link active">Home</a>
-                <a href="#" class="nav-link">Shop</a>
-                <a href="#" class="nav-link">Deals</a>
-                <a href="#" class="nav-link">Contact</a>
-            </nav>
+            <!-- 4. Right Side Drawer Container -->
+            <div class="nav-menu">
+                <nav class="nav-links-wrapper">
+                    <a href="#" class="nav-link active">Home</a>
+                    <a href="#" class="nav-link">Shop</a>
+                    <a href="#" class="nav-link">Deals</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </nav>
 
-            <div class="nav-actions">
-                <a href="#" class="action-icon" aria-label="Account"><i class="fa-regular fa-user"></i></a>
-                <a href="#" class="action-icon" aria-label="Favorites"><i class="fa-regular fa-heart"></i></a>
-                <a href="#" class="action-icon cart-icon" aria-label="Cart">
-                    <i class="fa-solid fa-cart-plus"></i>
-                    <span class="cart-count">3</span>
-                </a>
+                <div class="nav-actions">
+                    <a href="#" class="action-icon" aria-label="Account">
+                        <i class="fa-regular fa-user"></i>
+                        <span class="action-label">Profile</span>
+                    </a>
+                    <a href="#" class="action-icon" aria-label="Favorites">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="action-label">Wishlist</span>
+                    </a>
+                    <a href="#" class="action-icon cart-icon" aria-label="Cart">
+                        <div class="cart-badge-container">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span class="cart-count">3</span>
+                        </div>
+                        <span class="action-label">Cart</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -93,8 +112,7 @@
                 </label>
             </div>
         </aside>
-
-        <!-- Main Product Grid -->
+ 
         <!-- Main Product Grid -->
         <main class="main-content">
             <div class="content-header">
@@ -283,11 +301,11 @@
                 <!-- Product Card 8: Accessories -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1622445262465-2481c4574875?auto=format&fit=crop&w=600&q=80" alt="Fast Wireless Charging Pad">
+                        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTNXe1AZnU5nsxwvMKBeSV6Evw_4inDIeMiArvtMyIsFg9CxRFgSFNqHCKHWJCvjY1LMrg3Fbe8z5yexEw" alt="Fast Wireless Charging Pad">
                     </div>
                     <div class="product-info">
                         <span class="product-cat">Office Setup</span>
-                        <h3 class="product-title"><a href="#">Leather Desk Organizer</a></h3>
+                        <h3 class="product-title"><a href="#">Magnetic Wireless Charging Pad</a></h3>
                         <div class="product-rating">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -298,6 +316,29 @@
                         </div>
                         <div class="product-price">
                             <span class="current-price">$59.00</span>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">Hot</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=600&q=80" alt="Sleek mechanical keyboard with custom keycaps and warm white backlight">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">Peripherals</span>
+                        <h3 class="product-title"><a href="#">Pro Compact Mechanical Keyboard</a></h3>
+                        <div class="product-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>(4.9)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$149.00</span>
+                            <span class="old-price">$179.00</span>
                         </div>
                         <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
                     </div>
